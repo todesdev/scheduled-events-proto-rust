@@ -8,6 +8,7 @@ message ScheduledJob {
     string job_data = 3;
     string datetime = 4;
     string nats_subject = 5;
+    string nats_callback_subject = 6;
 }
 
 message JobResponse {
