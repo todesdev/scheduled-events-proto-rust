@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package eventmanager;
+
+message ScheduledJob {
+    string id = 1;
+    string job_name = 2;
+    string job_data = 3;
+    string datetime = 4;
+    string nats_subject = 5;
+}
+
+message JobResponse {
+    string id = 1;
+    string status = 2;
+    string message = 3;
+}
+
+message JobIdRequest {
+    string id = 1;
+}
+
+service EventManager {
+    rpc CreateJob(ScheduledJob) returns (JobResponse);
+    rpc GetJobStatus(JobIdRequest) returns (JobResponse);
+    rpc CancelJob(JobIdRequest) returns (JobResponse);
+}
